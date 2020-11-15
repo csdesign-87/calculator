@@ -3,6 +3,10 @@ const numberButtons = document.querySelectorAll('.number');
 const operatorButtons = document.querySelectorAll('.operator');
 const equalButton = document.querySelector('.equal');
 const clearButton = document.querySelector('.clear');
+var variable1;
+var variable2;
+var operator = "none";
+var result1;
 
 // TODO make references to all the proper HTML elements you'll be using to display elements to the user
 
@@ -21,32 +25,70 @@ clearButton.addEventListener('click', clickClearButton);
 
 function clickNumber(event) {
   	console.log(event.target.value);
-	const button-1 = document.getElementById("button-1");
-	const button-2 = document.getElementById("button-2");
-	const button-3 = document.getElementById("button-3");
-	const button-4 = document.getElementById("button-4");
-const button-5 = document.getElementById("button-5");
-const button-6 = document.getElementById("button-6");
-const button-7 = document.getElementById("button-7");
-const button-8 = document.getElementById("button-8");
-const button-9 = document.getElementById("button-9");
-const button-0 = document.getElementById("button-0");
+
+	if (operator === "none")
+        {
+		variable1 = parseInt(event.target.value);
+		const firstNumber = document.getElementById("first-number");
+		firstNumber.innerHTML = variable1;
+	}
+	else
+	{
+		variable2 = parseInt(event.target.value);
+		const secondNumber = document.getElementById("second-number");
+		secondNumber.innerHTML = variable2;
+	}
 }
 
 function clickOperator(event) {
 	console.log(event.target.value);
-	const button-multiply = document.getElementById("button-multiply");
-	const button-divide = document.getElementById("button-divide");
-	const button-power = document.getElementById("button-power");
-	const button-plus = document.getElementById("button-plus");
-	const button-minus = document.getElementById("button-minus");
+	operator = event.target.value;
+	const operation = document.getElementById("operator");
+	operation.innerHTML = operator;
 }
 
 function clickEqualButton(equalButton) {
-	const button-equal = document.getElementById("button-equal");
+	if (operator === "plus")
+	{
+		result1 = variable1 + variable2;
+		//operator = "+";
+	}
+	else 
+if (operator === "minus")
+	{
+		result1 = variable1 - variable2;
+	}
+	else
+if (operator === "divide")
+	{
+		result1 = variable1 / variable2;
+	}
+	else
+if (operator === "times")
+	{
+		result1 = variable1 * variable2;
+	}
+	else
+if (operator === "power")
+	{
+		result1 = variable1 ^ variable2;
+	}
+
+	const result = document.getElementById("result");
+	result.innerHTML = result1;
 }
 
 function clickClearButton(clearButton) {
-	const button-clear = document.getElementById("button-clear");
+	operator = "none";
+	variable1 = 0;
+	variable2 = 0;
+	const firstNumber = document.getElementById("first-number");
+	firstNumber.innerHTML = ""
+	const operation = document.getElementById("operator");
+	operation.innerHTML = "";
+	const secondNumber = document.getElementById("second-number");
+	secondNumber.innerHTML = "";
+	const result = document.getElementById("result");
+	result.innerHTML = "";
 }
 
